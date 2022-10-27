@@ -11,6 +11,9 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 
+#first loading then later filtering and showing only filtered fruites
+streamlit.dataframe(fruites_to_show)
+
 #If index is not specified, then by defaul it take row 0 as index, if want to set any particular column as index then do like below:
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
