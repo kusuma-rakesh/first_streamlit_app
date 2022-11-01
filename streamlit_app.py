@@ -23,9 +23,3 @@ fruits_selected = streamlit.multiselect("pick some fruites: ", list(my_fruit_lis
 fruites_to_show = my_fruit_list.loc[fruits_selected]
 #display the table on the page
 streamlit.dataframe(fruites_to_show)
-options = st.multiselect(
-    'What are your favorite colors',
-    ['Green', 'Yellow', 'Red', 'Blue'],
-    ['Yellow', 'Red'])
-
-st.write('You selected:', options)
