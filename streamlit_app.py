@@ -28,7 +28,11 @@ streamlit.dataframe(fruites_to_show)
 #lesson-9
 # header to the fruitvice 
 streamlit.header("Fruitvice Fruit Advice!")
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+"Kiwi")
+
+#Adding search text bax and passing it as param to api call
+fruit_choice = streamlit.text_input('What fruit information would you like to know?','kiwi')
+streamlit.write('The user entered',fruit_choice)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
 streamlit.text(fruityvice_response)
 
 #this below command help us show the response json on onscreen
