@@ -102,14 +102,13 @@ def get_fruit_load_list():
             return my_cur.fetchall()
       
 #Add button to load the fruits
+streamlit.title('View Our Fruit List - Add Your Favorites!')
 if streamlit.button('click to get list of fruits'):
       my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
       my_data_row = get_fruit_load_list()
+      my_conx.close()
       streamlit.dataframe(my_data_row)
       
-      
-            
-
 #streamlit.stop()
 
 #Adding second search text bax and passing it as param to api call
@@ -127,9 +126,10 @@ def insert_row_snowflake(new_fruit):
          my_cur.execute("insert into fruit_load_list values ('guava')")
          my_cur.execute("insert into fruit_load_list values ('kiwi')")
          return "Thanks for adding"+ new_fruit
-            
+
 ad_my_fruit = streamlit.text_input('What fruit would you like to add?')
 if streamlit.button('insert fruit to the list'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     back_from_function = insert_row_snowflake(ad_my_fruit)
+    my_cnx.close()
     streamlit.text(back_from_function)
