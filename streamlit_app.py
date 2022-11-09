@@ -47,7 +47,7 @@ streamlit.dataframe(fruitevice_normalize)
 
 #lesson12
 my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-mu_cur = my_conx.cursor()
+my_cur = my_conx.cursor()
 my_cur.execute("select CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
 streamlit.text("Hello/Welcome from Snowflake")
