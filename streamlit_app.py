@@ -56,7 +56,7 @@ except URLError as e:
   streamlit.error()
     
 #to correct the records which are inserting into snoflake-- duplicate records like from streamlit in fruitlist table, first stop streamlit here
-streamlit.stop()
+#streamlit.stop()
 
 #lesson12
 #import snowflake.connector
@@ -90,11 +90,27 @@ streamlit.dataframe(my_data_row)
 #Modifying the above code to fetch all fruits data instead of only fetch one.
 #Retrieving the fruit_load_list table data to a data frame 
 my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_conx.cursor()
+#my_cur = my_conx.cursor()
 my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.header('Snowflake - Fruit Load List Data:')
 streamlit.dataframe(my_data_row)
+
+def get_fruit_load_list():
+      with my_conx.cursor() as my_cur:
+            my_cur.execute("select * from fruit_load_list")
+            return my_cur.fetchall()
+      
+#Add button to load the fruits
+if streamlit.button('click to get list of fruits'):
+      my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+      my_data_row = get_fruit_load_list()
+      streamlit.dataframe(my_data_row)
+      
+      
+            
+
+streamlit.stop()
 
 #Adding second search text bax and passing it as param to api call
 ad_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
