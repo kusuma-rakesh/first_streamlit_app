@@ -163,3 +163,20 @@ select GRADER(step, (actual = expected), actual, expected, description) as grade
 );
 
 ------------------LESSON 11 Completed------------------
+
+------------------LESSON 12 started------------------
+select * from fruit_load_list;
+insert into fruit_load_list values ('Test');
+delete from fruit_load_list where fruit_name in ('from streamlit','Test');
+update pc_rivery_db.public.fruit_load_list set fruit_name = 'jackfruit' where fruit_name= 'Jackfruit'
+
+-- DO NOT EDIT ANYTHING BELOW THIS LINE
+select GRADER(step, (actual = expected), actual, expected, description) as graded_results from (
+   SELECT 'DABW07' as step 
+   ,(select count(*) 
+     from pc_rivery_db.public.fruit_load_list 
+     where fruit_name in ('jackfruit','papaya', 'kiwi', 'test', 'from streamlit', 'guava')) as actual 
+   , 4 as expected 
+   ,'Followed challenge lab directions' as description
+); 
+------------------LESSON 12 Completed------------------
