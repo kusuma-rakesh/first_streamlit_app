@@ -81,3 +81,9 @@ my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.header('Snowflake - Fruit Load List Data:')
 streamlit.dataframe(my_data_row)
+
+#Adding second search text bax and passing it as param to api call
+fruit_choice = streamlit.text_input('What fruit information would you like to know?','jackfruit')
+streamlit.write('The user entered',fruit_choice)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+streamlit.text(fruityvice_response)
