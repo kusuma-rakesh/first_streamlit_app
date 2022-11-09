@@ -29,20 +29,29 @@ fruites_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruites_to_show)
 
 #lesson-9
-# header to the fruitvice 
+
 #import requests
-streamlit.header("Fruitvice Fruit Advice!")
+
 
 #Adding search text bax and passing it as param to api call
+
+#Latest - Introducing the function
+def get_fruityvice_data(this_fruit_choice)
+      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+      fruitevice_normalize = pandas.json_normalize(fruityvice_response.json()) 
+      return fruitevice_normalize
+    
+
+# header to the fruitvice 
+streamlit.header("Fruitvice Fruit Advice!")
 #Learn how to use try..except & if..else 
 try:
   fruit_choice= streamlit.text_input('What fruit information would you like to know?')
   if not fruit_choice:
        streamlit.error("Please select a fruit to get information")
   else:
-      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-      fruitevice_normalize = pandas.json_normalize(fruityvice_response.json()) 
-      streamlit.dataframe(fruitevice_normalize)
+      back_from_function = get_fruityvice_data(fruit_choice)
+      streamlit.dataframe(back_from_function)
 except URLError as e:
   streamlit.error()
     
