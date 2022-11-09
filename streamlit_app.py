@@ -61,3 +61,13 @@ my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchone()
 streamlit.text("Snowflake - fruit_load_list Data:")
 streamlit.text(my_data_row)
+
+#lesson12- 
+#Changing the above text to Header
+#Retrieving the fruit_load_list table data to a data frame 
+my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_conx.cursor()
+my_cur.execute("select * from fruit_load_list")
+my_data_row = my_cur.fetchone()
+streamlit.Header("Snowflake - Fruit Load List Data:")
+streamlit.dataframe(my_data_row)
