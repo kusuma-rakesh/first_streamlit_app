@@ -36,7 +36,7 @@ streamlit.dataframe(fruites_to_show)
 #Adding search text bax and passing it as param to api call
 
 #Latest - Introducing the function
-def get_fruityvice_data(this_fruit_choice)
+def get_fruityvice_data(this_fruit_choice):
       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
       fruitevice_normalize = pandas.json_normalize(fruityvice_response.json()) 
       return fruitevice_normalize
