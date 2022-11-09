@@ -45,6 +45,9 @@ fruitevice_normalize = pandas.json_normalize(fruityvice_response.json())
 #show output on screen in a grid
 streamlit.dataframe(fruitevice_normalize)
 
+#to correct the records which are inserting into snoflake-- duplicate records like from streamlit in fruitlist table, first stop streamlit here
+streamlit.stop()
+
 #lesson12
 my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_conx.cursor()
