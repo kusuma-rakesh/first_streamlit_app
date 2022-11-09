@@ -110,12 +110,23 @@ if streamlit.button('click to get list of fruits'):
       
             
 
-streamlit.stop()
+#streamlit.stop()
 
 #Adding second search text bax and passing it as param to api call
-ad_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
-streamlit.write('Thanks for adding',ad_my_fruit)
+#ad_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
+#streamlit.write('Thanks for adding',ad_my_fruit)
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
 #streamlit.text(fruityvice_response)
 
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+#my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+
+def insert_row_snowflake(new_fruit):
+      with my_conx.cursor() as my_cur:
+            my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+            retrun "Thanks for adding"+new_fruit
+            
+ad_my_fruit = streamlit.text_input('What fruit would you like to add?')
+if streamlit.button('insert fruit to the list'):
+      my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+      back_from_function = insert_row_snowflake(ad_my_fruit)
+      streamlit.text(back_from_function)
