@@ -34,18 +34,19 @@ streamlit.dataframe(fruites_to_show)
 streamlit.header("Fruitvice Fruit Advice!")
 
 #Adding search text bax and passing it as param to api call
+ 
 try:
   fruit_choice= streamlit.text_input('What fruit information would you like to know?')
   if not fruit_choice:
     streamlit.error("Please select a fruit to get information")
-  else:
-    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-    #streamlit.text(fruityvice_response)
-    fruitevice_normalize = pandas.json_normalize(fruityvice_response.json()) 
-    streamlit.dataframe(fruitevice_normalize)
- except URLError as e:
-    streamlit.error()
-
+    else:
+      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+      fruitevice_normalize = pandas.json_normalize(fruityvice_response.json()) 
+      streamlit.dataframe(fruitevice_normalize)
+      except URLError as e:
+        streamlit.error()
+        
+    
 #to correct the records which are inserting into snoflake-- duplicate records like from streamlit in fruitlist table, first stop streamlit here
 streamlit.stop()
 
