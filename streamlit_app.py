@@ -71,3 +71,13 @@ my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchone()
 streamlit.header('Snowflake - Fruit Load List Data:')
 streamlit.dataframe(my_data_row)
+
+#lesson12- 
+#Modifying the above code to fetch all fruits data instead of only fetch one.
+#Retrieving the fruit_load_list table data to a data frame 
+my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_conx.cursor()
+my_cur.execute("select * from fruit_load_list")
+my_data_row = my_cur.fetchall()
+streamlit.header('Snowflake - Fruit Load List Data:')
+streamlit.dataframe(my_data_row)
