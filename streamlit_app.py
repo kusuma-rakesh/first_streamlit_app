@@ -52,3 +52,12 @@ my_cur.execute("select CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
 streamlit.text("Hello/Welcome from Snowflake")
 streamlit.text(my_data_row)
+
+
+#lesson12- Retrieving the fruit_load_list table data
+my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_conx.cursor()
+my_cur.execute("select * from fruit_load_list")
+my_data_row = my_cur.fetchone()
+streamlit.text("Snowflake - fruit_load_list Data:")
+streamlit.text(my_data_row)
