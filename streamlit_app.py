@@ -2,7 +2,9 @@ import streamlit
 import pandas
 import requests
 import snowflake.connector
+from urlib.error import URLError
 
+#import streamlit
 streamlit.title('My Parent New Healthy Diner')
 streamlit.header('Breakfast Menu')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
@@ -28,6 +30,7 @@ streamlit.dataframe(fruites_to_show)
 
 #lesson-9
 # header to the fruitvice 
+#import requests
 streamlit.header("Fruitvice Fruit Advice!")
 
 #Adding search text bax and passing it as param to api call
@@ -49,6 +52,7 @@ streamlit.dataframe(fruitevice_normalize)
 streamlit.stop()
 
 #lesson12
+#import snowflake.connector
 my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_conx.cursor()
 my_cur.execute("select CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
