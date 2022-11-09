@@ -34,7 +34,7 @@ streamlit.dataframe(fruites_to_show)
 streamlit.header("Fruitvice Fruit Advice!")
 
 #Adding search text bax and passing it as param to api call
- 
+#Learn how to use try..except & if..else 
 try:
   fruit_choice= streamlit.text_input('What fruit information would you like to know?')
   if not fruit_choice:
@@ -45,8 +45,6 @@ try:
       streamlit.dataframe(fruitevice_normalize)
 except URLError as e:
   streamlit.error()
-        
-        
     
 #to correct the records which are inserting into snoflake-- duplicate records like from streamlit in fruitlist table, first stop streamlit here
 streamlit.stop()
