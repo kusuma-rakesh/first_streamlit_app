@@ -103,7 +103,7 @@ def get_fruit_load_list():
       
 #Add button to load the fruits
 streamlit.title('View Our Fruit List - Add Your Favorites!')
-if streamlit.button('click to get list of fruits'):
+if streamlit.button('Get Fruit List'):
       my_conx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
       my_data_row = get_fruit_load_list()
       my_conx.close()
